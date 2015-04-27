@@ -29,11 +29,11 @@ struct Pixel
         }
     }
     
-    func intensityFromPixelPointer(pixelPointer: PixelPointer, _ width: Int) -> Double
+    func intensityFromPixelPointer(pixelPointer: PixelPointer, pixelsPerRow: Int) -> Double
     {
         let
         stride = 4, // each pixel occupies 4 bytes (RGBA)
-        offset = (width * row + col) * stride,
+        offset = (pixelsPerRow * row + col) * stride,
         red    = pixelPointer[offset + 0],
         green  = pixelPointer[offset + 1],
         blue   = pixelPointer[offset + 2]

@@ -33,9 +33,8 @@ class AsciiArtist
         pixelData    = CGDataProviderCopyData(dataProvider),
         pixelPointer = CFDataGetBytePtr(pixelData),
         intensities  = intensityMatrixFromPixelPointer(pixelPointer),
-        symbolLines  = symbolLinesFromIntensityMatrix(intensities),
-        joinedLines  = join("\n", symbolLines)
-        return joinedLines
+        symbolMatrix = symbolMatrixFromIntensityMatrix(intensities)
+        return join("\n", symbolMatrix)
     }
     
     private func intensityMatrixFromPixelPointer(pointer: PixelPointer) -> [[Double]]
@@ -43,12 +42,12 @@ class AsciiArtist
         let matrix = Pixel.createPixelMatrix(width, height)
         return matrix.map { pixelRow in
             pixelRow.map {
-                $0.intensityFromPixelPointer(pointer, self.width)
+                $0.intensityFromPixelPointer(pointer, pixelsPerRow: self.width)
             }
         }
     }
     
-    private func symbolLinesFromIntensityMatrix(matrix: [[Double]]) -> [String]
+    private func symbolMatrixFromIntensityMatrix(matrix: [[Double]]) -> [String]
     {
         return matrix.map { intensityRow in
             intensityRow.reduce("") {
@@ -63,8 +62,7 @@ class AsciiArtist
         let
         factor = palette.symbols.count - 1,
         value  = round(intensity * Double(factor)),
-        index  = Int(value),
-        symbol = palette.symbols[index]
-        return symbol
+        index  = Int(value)
+        return palette.symbols[index]
     }
 }
