@@ -68,7 +68,7 @@ class AsciiPalette
         codeMappings  = NSDictionary(objects: symbols, forKeys: whitePixelCounts),
         uniqueCounts  = Set(whitePixelCounts),
         sortedCounts  = sorted(uniqueCounts),
-        sortedSymbols   = sortedCounts.map { codeMappings[$0] as! String }
+        sortedSymbols = sortedCounts.map { codeMappings[$0] as! String }
         return sortedSymbols
     }
 }
