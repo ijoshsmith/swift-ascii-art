@@ -50,13 +50,13 @@ class AsciiPalette
         pixelData    = CGDataProviderCopyData(dataProvider),
         byteCount    = CFDataGetLength(pixelData),
         pixelPointer = CFDataGetBytePtr(pixelData),
-        pixelIndexes = stride(from: 0, to: byteCount, by: 4)
+        pixelOffsets = stride(from: 0, to: byteCount, by: 4)
         
-        return Array(pixelIndexes).reduce(0) { (sum, index) -> Int in
+        return Array(pixelOffsets).reduce(0) { (sum, offset) -> Int in
             let
-            r = pixelPointer[index + 0],
-            g = pixelPointer[index + 1],
-            b = pixelPointer[index + 2],
+            r = pixelPointer[offset + 0],
+            g = pixelPointer[offset + 1],
+            b = pixelPointer[offset + 2],
             isWhite = (r == 255) && (g == 255) && (b == 255)
             return isWhite ? sum + 1 : sum
         }
@@ -65,10 +65,10 @@ class AsciiPalette
     private func sortSymbolsByColorIntensity(symbols: [String], _ whitePixelCounts: [Int]) -> [String]
     {
         let
-        codeMappings  = NSDictionary(objects: symbols, forKeys: whitePixelCounts),
+        mappings      = NSDictionary(objects: symbols, forKeys: whitePixelCounts),
         uniqueCounts  = Set(whitePixelCounts),
         sortedCounts  = sorted(uniqueCounts),
-        sortedSymbols = sortedCounts.map { codeMappings[$0] as! String }
+        sortedSymbols = sortedCounts.map { mappings[$0] as! String }
         return sortedSymbols
     }
 }

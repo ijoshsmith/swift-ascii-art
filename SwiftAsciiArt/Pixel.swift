@@ -33,18 +33,18 @@ struct Pixel
     {
         let
         stride = 4, // each pixel occupies 4 bytes (RGBA)
-        index  = (width * row + col) * stride,
-        red    = pixelPointer[index + 0],
-        green  = pixelPointer[index + 1],
-        blue   = pixelPointer[index + 2]
+        offset = (width * row + col) * stride,
+        red    = pixelPointer[offset + 0],
+        green  = pixelPointer[offset + 1],
+        blue   = pixelPointer[offset + 2]
         return Pixel.calculateIntensity(red, green, blue)
     }
     
     private static func calculateIntensity(r: UInt8, _ g: UInt8, _ b: UInt8) -> Double
     {
         /* 
-         * Convert the pixel's color to grayscale then normalize
-         * the color channels sum to a value between 0 and 1.
+         * Convert the pixel color to grayscale then normalize
+         * the color channels' sum to a value between 0 and 1.
          */
         
         // Refer to http://en.wikipedia.org/wiki/Grayscale#Luma_coding_in_video_systems

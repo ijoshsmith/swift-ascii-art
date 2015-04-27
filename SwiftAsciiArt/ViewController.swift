@@ -71,7 +71,7 @@ class ViewController:
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    // MARK: - Helper methods
+    // MARK: - Rendering
     
     private func displayImageNamed(imageName: String)
     {
@@ -122,17 +122,7 @@ class ViewController:
     private func configureZoomSupport()
     {
         scrollView.delegate = self
-        scrollView.maximumZoomScale = 5.00
-        
-        let doubleTap = UITapGestureRecognizer(target: self, action: "handleDoubleTapGesture:")
-        doubleTap.numberOfTapsRequired = 2
-        doubleTap.numberOfTouchesRequired = 1
-        scrollView.addGestureRecognizer(doubleTap)
-    }
-    
-    func handleDoubleTapGesture(sender: AnyObject)
-    {
-        updateZoomSettings(animated: true)
+        scrollView.maximumZoomScale = 5
     }
     
     private func updateZoomSettings(#animated: Bool)
