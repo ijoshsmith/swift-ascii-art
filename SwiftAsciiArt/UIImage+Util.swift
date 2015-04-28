@@ -12,7 +12,7 @@ import UIKit
 
 extension UIImage
 {
-    class func imageOfSymbol(symbol: String, font: UIFont) -> UIImage
+    class func imageOfSymbol(symbol: String, _ font: UIFont) -> UIImage
     {
         let
         length = font.pointSize * 2,

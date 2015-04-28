@@ -26,10 +26,10 @@ class AsciiPalette
     private func symbolsSortedByIntensityForAsciiCodes(codes: Range<Int>) -> [String]
     {
         let
-        unsortedSymbols  = codes.map { self.symbolFromAsciiCode($0) },
-        symbolRenderings = unsortedSymbols.map { UIImage.imageOfSymbol($0, font: self.font) },
-        whitePixelCounts = symbolRenderings.map { self.whitePixelsInRendering($0) },
-        sortedSymbols    = sortSymbolsByColorIntensity(unsortedSymbols, whitePixelCounts)
+        symbols          = codes.map { self.symbolFromAsciiCode($0) },
+        symbolImages     = symbols.map { UIImage.imageOfSymbol($0, self.font) },
+        whitePixelCounts = symbolImages.map { self.countWhitePixelsInImage($0) },
+        sortedSymbols    = sortByIntensity(symbols, whitePixelCounts)
         return sortedSymbols
     }
     
@@ -38,10 +38,10 @@ class AsciiPalette
         return String(Character(UnicodeScalar(code)))
     }
     
-    private func whitePixelsInRendering(rendering: UIImage) -> Int
+    private func countWhitePixelsInImage(image: UIImage) -> Int
     {
         let
-        dataProvider = CGImageGetDataProvider(rendering.CGImage),
+        dataProvider = CGImageGetDataProvider(image.CGImage),
         pixelData    = CGDataProviderCopyData(dataProvider),
         byteCount    = CFDataGetLength(pixelData),
         pixelPointer = CFDataGetBytePtr(pixelData),
@@ -56,7 +56,7 @@ class AsciiPalette
         }
     }
     
-    private func sortSymbolsByColorIntensity(symbols: [String], _ whitePixelCounts: [Int]) -> [String]
+    private func sortByIntensity(symbols: [String], _ whitePixelCounts: [Int]) -> [String]
     {
         let
         mappings      = NSDictionary(objects: symbols, forKeys: whitePixelCounts),
