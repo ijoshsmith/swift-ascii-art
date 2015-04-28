@@ -14,15 +14,11 @@ class AsciiArtist
 {
     private let
     image:   UIImage,
-    width:   Int,
-    height:  Int,
     palette: AsciiPalette
     
     init(_ image: UIImage, _ palette: AsciiPalette)
     {
         self.image   = image
-        self.width   = Int(image.size.width)
-        self.height  = Int(image.size.height)
         self.palette = palette
     }
     
@@ -39,7 +35,10 @@ class AsciiArtist
     
     private func intensityMatrixFromPixelPointer(pointer: PixelPointer) -> [[Double]]
     {
-        let matrix = Pixel.createPixelMatrix(width, height)
+        let
+        width  = Int(image.size.width),
+        height = Int(image.size.height),
+        matrix = Pixel.createPixelMatrix(width, height)
         return matrix.map { pixelRow in
             pixelRow.map { pixel in
                 pixel.intensityFromPixelPointer(pointer)
@@ -59,6 +58,7 @@ class AsciiArtist
     private func symbolFromIntensity(intensity: Double) -> String
     {
         assert(0.0 <= intensity && intensity <= 1.0)
+        
         let
         factor = palette.symbols.count - 1,
         value  = round(intensity * Double(factor)),
