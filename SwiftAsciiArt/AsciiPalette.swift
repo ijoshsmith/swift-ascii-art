@@ -46,13 +46,13 @@ class AsciiPalette
         byteCount    = CFDataGetLength(pixelData),
         pixelPointer = CFDataGetBytePtr(pixelData),
         pixelOffsets = stride(from: 0, to: byteCount, by: 4)
-        return Array(pixelOffsets).reduce(0) { (sum, offset) -> Int in
+        return reduce(pixelOffsets, 0) { (count, offset) -> Int in
             let
             r = pixelPointer[offset + 0],
             g = pixelPointer[offset + 1],
             b = pixelPointer[offset + 2],
             isWhite = (r == 255) && (g == 255) && (b == 255)
-            return isWhite ? sum + 1 : sum
+            return isWhite ? count + 1 : count
         }
     }
     
