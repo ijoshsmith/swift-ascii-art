@@ -45,7 +45,7 @@ class AsciiPalette
         pixelData    = CGDataProviderCopyData(dataProvider),
         byteCount    = CFDataGetLength(pixelData),
         pixelPointer = CFDataGetBytePtr(pixelData),
-        pixelOffsets = stride(from: 0, to: byteCount, by: 4)
+        pixelOffsets = stride(from: 0, to: byteCount, by: Pixel.bytesPerPixel)
         return reduce(pixelOffsets, 0) { (count, offset) -> Int in
             let
             r = pixelPointer[offset + 0],

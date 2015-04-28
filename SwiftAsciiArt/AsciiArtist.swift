@@ -41,8 +41,8 @@ class AsciiArtist
     {
         let matrix = Pixel.createPixelMatrix(width, height)
         return matrix.map { pixelRow in
-            pixelRow.map {
-                $0.intensityFromPixelPointer(pointer, pixelsPerRow: self.width)
+            pixelRow.map { pixel in
+                pixel.intensityFromPixelPointer(pointer)
             }
         }
     }
