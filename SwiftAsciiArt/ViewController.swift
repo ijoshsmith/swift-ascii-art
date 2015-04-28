@@ -14,7 +14,7 @@ class ViewController:
     UINavigationControllerDelegate, // required by image picker
     UIScrollViewDelegate
 {
-    private let labelFont: UIFont = UIFont(name: "Menlo", size: 7)!
+    private let labelFont = UIFont(name: "Menlo", size: 7)!
     private let maxImageSize = CGSizeMake(310, 310)
     private lazy var palette: AsciiPalette = AsciiPalette(font: self.labelFont)
     
