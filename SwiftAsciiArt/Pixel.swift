@@ -15,28 +15,33 @@ typealias PixelPointer = UnsafePointer<UInt8>
 /** A point in an image converted to an ASCII character. */
 struct Pixel
 {
-    let row: Int, col: Int
+    let
+    row: Int,
+    col: Int
+    
+    private init(_ row: Int, _ col: Int)
+    {
+        self.row = row
+        self.col = col
+    }
     
     static func createPixelMatrix(width: Int, _ height: Int) -> [[Pixel]]
     {
-        let
-        rows = [Int](0..<height),
-        cols = [Int](0..<width)
-        return rows.map { row in
-            cols.map { col in
-                Pixel(row: row, col: col)
+        return map(0..<height) { row in
+            map(0..<width) { col in
+                Pixel(row, col)
             }
         }
     }
     
-    func intensityFromPixelPointer(pixelPointer: PixelPointer, pixelsPerRow: Int) -> Double
+    func intensityFromPixelPointer(pointer: PixelPointer, pixelsPerRow: Int) -> Double
     {
         let
         stride = 4, // each pixel occupies 4 bytes (RGBA)
         offset = (pixelsPerRow * row + col) * stride,
-        red    = pixelPointer[offset + 0],
-        green  = pixelPointer[offset + 1],
-        blue   = pixelPointer[offset + 2]
+        red    = pointer[offset + 0],
+        green  = pointer[offset + 1],
+        blue   = pointer[offset + 2]
         return Pixel.calculateIntensity(red, green, blue)
     }
     
@@ -51,18 +56,13 @@ struct Pixel
         let
         redWeight   = 0.229,
         greenWeight = 0.587,
-        blueWeight  = 0.114
-        
-        let maximum =
-            255.0 * redWeight   +
-            255.0 * greenWeight +
-            255.0 * blueWeight
-        
-        let sum =
-            Double(r) * redWeight   +
-            Double(g) * greenWeight +
-            Double(b) * blueWeight
-        
-        return sum / maximum
+        blueWeight  = 0.114,
+        weightedMax = 255.0 * redWeight   +
+                      255.0 * greenWeight +
+                      255.0 * blueWeight,
+        weightedSum = Double(r) * redWeight   +
+                      Double(g) * greenWeight +
+                      Double(b) * blueWeight
+        return weightedSum / weightedMax
     }
 }

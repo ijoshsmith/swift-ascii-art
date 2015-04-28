@@ -14,21 +14,16 @@ class AsciiPalette
 {
     private let font: UIFont
     
-    init(font: UIFont)
-    {
-        self.font = font
-    }
+    init(font: UIFont) { self.font = font }
     
     lazy var symbols: [String] = self.loadSymbols()
     
     private func loadSymbols() -> [String]
     {
-        // Start with ' ' and end at '~'
-        let asciiCodes = [Int](32...126)
-        return symbolsSortedByIntensityForAsciiCodes(asciiCodes)
+        return symbolsSortedByIntensityForAsciiCodes(32...126) // from ' ' to '~'
     }
     
-    private func symbolsSortedByIntensityForAsciiCodes(codes: [Int]) -> [String]
+    private func symbolsSortedByIntensityForAsciiCodes(codes: Range<Int>) -> [String]
     {
         let
         unsortedSymbols  = codes.map { self.symbolFromAsciiCode($0) },
@@ -51,7 +46,6 @@ class AsciiPalette
         byteCount    = CFDataGetLength(pixelData),
         pixelPointer = CFDataGetBytePtr(pixelData),
         pixelOffsets = stride(from: 0, to: byteCount, by: 4)
-        
         return Array(pixelOffsets).reduce(0) { (sum, offset) -> Int in
             let
             r = pixelPointer[offset + 0],
