@@ -14,7 +14,7 @@ typealias PixelPointer = UnsafePointer<UInt8>
 /** A point in an image converted to an ASCII character. */
 struct Pixel
 {
-    /**  The number of bytes a pixel occupies. 1 byte per channel (RGBA). */
+    /** The number of bytes a pixel occupies. 1 byte per channel (RGBA). */
     static let bytesPerPixel = 4
     
     private let offset: Int
