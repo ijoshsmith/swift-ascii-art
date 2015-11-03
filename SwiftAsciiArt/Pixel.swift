@@ -22,8 +22,8 @@ struct Pixel
     
     static func createPixelMatrix(width: Int, _ height: Int) -> [[Pixel]]
     {
-        return map(0..<height) { row in
-            map(0..<width) { col in
+        return (0..<height).map { row in
+            (0..<width).map { col in
                 let offset = (width * row + col) * Pixel.bytesPerPixel
                 return Pixel(offset)
             }

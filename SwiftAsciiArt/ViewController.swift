@@ -56,7 +56,7 @@ class ViewController:
     
     // MARK: - UIImagePickerControllerDelegate
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject])
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])
     {
         self.dismissViewControllerAnimated(true, completion: nil)
         
@@ -94,7 +94,7 @@ class ViewController:
                 self.busyView.hidden = true
             }
             
-            println(asciiArt)
+            print(asciiArt)
         }
     }
     
@@ -125,7 +125,7 @@ class ViewController:
         scrollView.maximumZoomScale = 5
     }
     
-    private func updateZoomSettings(#animated: Bool)
+    private func updateZoomSettings(animated animated: Bool)
     {
         let
         scrollSize  = scrollView.frame.size,
