@@ -45,8 +45,8 @@ class AsciiPalette
         pixelData    = CGDataProviderCopyData(dataProvider),
         pixelPointer = CFDataGetBytePtr(pixelData),
         byteCount    = CFDataGetLength(pixelData),
-        pixelOffsets = stride(from: 0, to: byteCount, by: Pixel.bytesPerPixel)
-        return reduce(pixelOffsets, 0) { (count, offset) -> Int in
+        pixelOffsets = 0.stride(to: byteCount, by: Pixel.bytesPerPixel)
+        return pixelOffsets.reduce(0) { (count, offset) -> Int in
             let
             r = pixelPointer[offset + 0],
             g = pixelPointer[offset + 1],
@@ -61,7 +61,7 @@ class AsciiPalette
         let
         mappings      = NSDictionary(objects: symbols, forKeys: whitePixelCounts),
         uniqueCounts  = Set(whitePixelCounts),
-        sortedCounts  = sorted(uniqueCounts),
+        sortedCounts  = uniqueCounts.sort(),
         sortedSymbols = sortedCounts.map { mappings[$0] as! String }
         return sortedSymbols
     }

@@ -65,16 +65,15 @@ extension UIImage
                 bitsPerComp,
                 bytesPerRow,
                 colorSpace,
-                bitmapInfo)
+                bitmapInfo.rawValue)
         
             if context != nil
             {
-                CGContextSetInterpolationQuality(context, kCGInterpolationLow)
+                CGContextSetInterpolationQuality(context, CGInterpolationQuality.Low)
                 CGContextDrawImage(context, targetRect, CGImage)
-                let scaledCGImage = CGBitmapContextCreateImage(context)
-                if let scaledImage = UIImage(CGImage: scaledCGImage)
+                if let scaledCGImage = CGBitmapContextCreateImage(context)
                 {
-                    return scaledImage
+                    return UIImage(CGImage: scaledCGImage)
                 }
             }
         }

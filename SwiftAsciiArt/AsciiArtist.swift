@@ -30,7 +30,7 @@ class AsciiArtist
         pixelPointer = CFDataGetBytePtr(pixelData),
         intensities  = intensityMatrixFromPixelPointer(pixelPointer),
         symbolMatrix = symbolMatrixFromIntensityMatrix(intensities)
-        return join("\n", symbolMatrix)
+        return symbolMatrix.joinWithSeparator("\n")
     }
     
     private func intensityMatrixFromPixelPointer(pointer: PixelPointer) -> [[Double]]
