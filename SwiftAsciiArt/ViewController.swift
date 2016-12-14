@@ -14,11 +14,11 @@ class ViewController:
     UINavigationControllerDelegate, // required by image picker
     UIScrollViewDelegate
 {
-    private let labelFont = UIFont(name: "Menlo", size: 7)!
-    private let maxImageSize = CGSizeMake(310, 310)
-    private lazy var palette: AsciiPalette = AsciiPalette(font: self.labelFont)
+    fileprivate let labelFont = UIFont(name: "Menlo", size: 7)!
+    fileprivate let maxImageSize = CGSize(width: 310, height: 310)
+    fileprivate lazy var palette: AsciiPalette = AsciiPalette(font: self.labelFont)
     
-    private var currentLabel: UILabel?
+    fileprivate var currentLabel: UILabel?
     @IBOutlet weak var busyView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -32,33 +32,33 @@ class ViewController:
     
     // MARK: - Actions
     
-    @IBAction func handleKermitTapped(sender: AnyObject)
+    @IBAction func handleKermitTapped(_ sender: AnyObject)
     {
         displayImageNamed("kermit")
     }
     
-    @IBAction func handleBatmanTapped(sender: AnyObject)
+    @IBAction func handleBatmanTapped(_ sender: AnyObject)
     {
         displayImageNamed("batman")
     }
     
-    @IBAction func handleMonkeyTapped(sender: AnyObject)
+    @IBAction func handleMonkeyTapped(_ sender: AnyObject)
     {
         displayImageNamed("monkey")
     }
     
-    @IBAction func handlePickImageTapped(sender: AnyObject)
+    @IBAction func handlePickImageTapped(_ sender: AnyObject)
     {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
-        self.showViewController(imagePicker, sender: self)
+        self.show(imagePicker, sender: self)
     }
     
     // MARK: - UIImagePickerControllerDelegate
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
     {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
         
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage
         {
@@ -66,22 +66,22 @@ class ViewController:
         }
     }
     
-    func imagePickerControllerDidCancel(picker: UIImagePickerController)
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController)
     {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Rendering
     
-    private func displayImageNamed(imageName: String)
+    fileprivate func displayImageNamed(_ imageName: String)
     {
         displayImage(UIImage(named: imageName)!)
     }
     
-    private func displayImage(image: UIImage)
+    fileprivate func displayImage(_ image: UIImage)
     {
-        self.busyView.hidden = false
-        dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0)) {
+        self.busyView.isHidden = false
+        DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
             
             let // Rotate first because the orientation is lost when resizing.
             rotatedImage = image.imageRotatedToPortraitOrientation(),
@@ -89,20 +89,20 @@ class ViewController:
             asciiArtist  = AsciiArtist(resizedImage, self.palette),
             asciiArt     = asciiArtist.createAsciiArt()
             
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 self.displayAsciiArt(asciiArt)
-                self.busyView.hidden = true
+                self.busyView.isHidden = true
             }
             
             print(asciiArt)
         }
     }
     
-    private func displayAsciiArt(asciiArt: String)
+    fileprivate func displayAsciiArt(_ asciiArt: String)
     {
         let label = UILabel()
         label.font = self.labelFont
-        label.lineBreakMode = NSLineBreakMode.ByClipping
+        label.lineBreakMode = NSLineBreakMode.byClipping
         label.numberOfLines = 0
         label.text = asciiArt
         label.sizeToFit()
@@ -114,18 +114,18 @@ class ViewController:
         scrollView.contentSize = label.frame.size
         
         self.updateZoomSettings(animated: false)
-        scrollView.contentOffset = CGPointZero
+        scrollView.contentOffset = CGPoint.zero
     }
     
     // MARK: - Zooming support
     
-    private func configureZoomSupport()
+    fileprivate func configureZoomSupport()
     {
         scrollView.delegate = self
         scrollView.maximumZoomScale = 5
     }
     
-    private func updateZoomSettings(animated animated: Bool)
+    fileprivate func updateZoomSettings(animated: Bool)
     {
         let
         scrollSize  = scrollView.frame.size,
@@ -139,7 +139,7 @@ class ViewController:
     
     // MARK: - UIScrollViewDelegate
     
-    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView?
+    func viewForZooming(in scrollView: UIScrollView) -> UIView?
     {
         return currentLabel
     }

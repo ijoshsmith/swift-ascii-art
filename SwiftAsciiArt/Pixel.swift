@@ -17,10 +17,10 @@ struct Pixel
     /** The number of bytes a pixel occupies. 1 byte per channel (RGBA). */
     static let bytesPerPixel = 4
     
-    private let offset: Int
-    private init(_ offset: Int) { self.offset = offset }
+    fileprivate let offset: Int
+    fileprivate init(_ offset: Int) { self.offset = offset }
     
-    static func createPixelMatrix(width: Int, _ height: Int) -> [[Pixel]]
+    static func createPixelMatrix(_ width: Int, _ height: Int) -> [[Pixel]]
     {
         return (0..<height).map { row in
             (0..<width).map { col in
@@ -30,7 +30,7 @@ struct Pixel
         }
     }
     
-    func intensityFromPixelPointer(pointer: PixelPointer) -> Double
+    func intensityFromPixelPointer(_ pointer: PixelPointer) -> Double
     {
         let
         red   = pointer[offset + 0],
@@ -39,7 +39,7 @@ struct Pixel
         return Pixel.calculateIntensity(red, green, blue)
     }
     
-    private static func calculateIntensity(r: UInt8, _ g: UInt8, _ b: UInt8) -> Double
+    fileprivate static func calculateIntensity(_ r: UInt8, _ g: UInt8, _ b: UInt8) -> Double
     {
         // Normalize the pixel's grayscale value to between 0 and 1.
         // Weights from http://en.wikipedia.org/wiki/Grayscale#Luma_coding_in_video_systems

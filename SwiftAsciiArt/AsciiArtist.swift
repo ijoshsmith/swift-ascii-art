@@ -12,7 +12,7 @@ import UIKit
 /** Transforms an image to ASCII art. */
 class AsciiArtist
 {
-    private let
+    fileprivate let
     image:   UIImage,
     palette: AsciiPalette
     
@@ -25,15 +25,15 @@ class AsciiArtist
     func createAsciiArt() -> String
     {
         let
-        dataProvider = CGImageGetDataProvider(image.CGImage),
-        pixelData    = CGDataProviderCopyData(dataProvider),
+        dataProvider = image.cgImage?.dataProvider,
+        pixelData    = dataProvider?.data,
         pixelPointer = CFDataGetBytePtr(pixelData),
-        intensities  = intensityMatrixFromPixelPointer(pixelPointer),
+        intensities  = intensityMatrixFromPixelPointer(pixelPointer!),
         symbolMatrix = symbolMatrixFromIntensityMatrix(intensities)
-        return symbolMatrix.joinWithSeparator("\n")
+        return symbolMatrix.joined(separator: "\n")
     }
     
-    private func intensityMatrixFromPixelPointer(pointer: PixelPointer) -> [[Double]]
+    fileprivate func intensityMatrixFromPixelPointer(_ pointer: PixelPointer) -> [[Double]]
     {
         let
         width  = Int(image.size.width),
@@ -46,7 +46,7 @@ class AsciiArtist
         }
     }
     
-    private func symbolMatrixFromIntensityMatrix(matrix: [[Double]]) -> [String]
+    fileprivate func symbolMatrixFromIntensityMatrix(_ matrix: [[Double]]) -> [String]
     {
         return matrix.map { intensityRow in
             intensityRow.reduce("") {
@@ -55,7 +55,7 @@ class AsciiArtist
         }
     }
     
-    private func symbolFromIntensity(intensity: Double) -> String
+    fileprivate func symbolFromIntensity(_ intensity: Double) -> String
     {
         assert(0.0 <= intensity && intensity <= 1.0)
         
