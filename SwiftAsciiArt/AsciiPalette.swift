@@ -12,18 +12,18 @@ import UIKit
 /** Provides a list of ASCII symbols sorted from darkest to brightest. */
 class AsciiPalette
 {
-    private let font: UIFont
+    fileprivate let font: UIFont
     
     init(font: UIFont) { self.font = font }
     
     lazy var symbols: [String] = self.loadSymbols()
     
-    private func loadSymbols() -> [String]
+    fileprivate func loadSymbols() -> [String]
     {
         return symbolsSortedByIntensityForAsciiCodes(32...126) // from ' ' to '~'
     }
     
-    private func symbolsSortedByIntensityForAsciiCodes(codes: Range<Int>) -> [String]
+    fileprivate func symbolsSortedByIntensityForAsciiCodes(_ codes: CountableClosedRange<Int>) -> [String]
     {
         let
         symbols          = codes.map { self.symbolFromAsciiCode($0) },
@@ -33,35 +33,35 @@ class AsciiPalette
         return sortedSymbols
     }
     
-    private func symbolFromAsciiCode(code: Int) -> String
+    fileprivate func symbolFromAsciiCode(_ code: Int) -> String
     {
-        return String(Character(UnicodeScalar(code)))
+        return String(Character(UnicodeScalar(code)!))
     }
     
-    private func countWhitePixelsInImage(image: UIImage) -> Int
+    fileprivate func countWhitePixelsInImage(_ image: UIImage) -> Int
     {
         let
-        dataProvider = CGImageGetDataProvider(image.CGImage),
-        pixelData    = CGDataProviderCopyData(dataProvider),
+        dataProvider = image.cgImage?.dataProvider,
+        pixelData    = dataProvider?.data,
         pixelPointer = CFDataGetBytePtr(pixelData),
         byteCount    = CFDataGetLength(pixelData),
-        pixelOffsets = 0.stride(to: byteCount, by: Pixel.bytesPerPixel)
+        pixelOffsets = stride(from: 0, to: byteCount, by: Pixel.bytesPerPixel)
         return pixelOffsets.reduce(0) { (count, offset) -> Int in
             let
-            r = pixelPointer[offset + 0],
-            g = pixelPointer[offset + 1],
-            b = pixelPointer[offset + 2],
+            r = pixelPointer?[offset + 0],
+            g = pixelPointer?[offset + 1],
+            b = pixelPointer?[offset + 2],
             isWhite = (r == 255) && (g == 255) && (b == 255)
             return isWhite ? count + 1 : count
         }
     }
     
-    private func sortByIntensity(symbols: [String], _ whitePixelCounts: [Int]) -> [String]
+    fileprivate func sortByIntensity(_ symbols: [String], _ whitePixelCounts: [Int]) -> [String]
     {
         let
-        mappings      = NSDictionary(objects: symbols, forKeys: whitePixelCounts),
+        mappings      = NSDictionary(objects: symbols, forKeys: whitePixelCounts as [NSCopying]),
         uniqueCounts  = Set(whitePixelCounts),
-        sortedCounts  = uniqueCounts.sort(),
+        sortedCounts  = uniqueCounts.sorted(),
         sortedSymbols = sortedCounts.map { mappings[$0] as! String }
         return sortedSymbols
     }
