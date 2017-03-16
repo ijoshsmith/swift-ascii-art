@@ -10,13 +10,13 @@ import Foundation
 import UIKit
 
 /** Provides a list of ASCII symbols sorted from darkest to brightest. */
-class AsciiPalette
+public class AsciiPalette
 {
     fileprivate let font: UIFont
     
-    init(font: UIFont) { self.font = font }
+    public init(font: UIFont) { self.font = font }
     
-    lazy var symbols: [String] = self.loadSymbols()
+    public lazy var symbols: [String] = self.loadSymbols()
     
     fileprivate func loadSymbols() -> [String]
     {

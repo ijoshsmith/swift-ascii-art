@@ -19,7 +19,54 @@
 		03F080921AED5CF700A20334 /* monkey.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F080911AED5CF700A20334 /* monkey.png */; };
 		03F080961AEDD29200A20334 /* batman.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F080951AEDD29200A20334 /* batman.png */; };
 		03F080981AEDD7D000A20334 /* AsciiPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F080971AEDD7D000A20334 /* AsciiPalette.swift */; };
+		73DA7B721B52DC8900A6C74E /* SwiftAsciiArt_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 73DA7B711B52DC8900A6C74E /* SwiftAsciiArt_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		73DA7B781B52DC8900A6C74E /* SwiftAsciiArt_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73DA7B6D1B52DC8800A6C74E /* SwiftAsciiArt_iOS.framework */; };
+		73DA7B811B52DC8900A6C74E /* SwiftAsciiArt_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DA7B801B52DC8900A6C74E /* SwiftAsciiArt_iOSTests.swift */; };
+		73DA7B841B52DC8900A6C74E /* SwiftAsciiArt_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73DA7B6D1B52DC8800A6C74E /* SwiftAsciiArt_iOS.framework */; };
+		73DA7B851B52DC8900A6C74E /* SwiftAsciiArt_iOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 73DA7B6D1B52DC8800A6C74E /* SwiftAsciiArt_iOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		73DA7B8D1B52DC9700A6C74E /* AsciiArtist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0384D6EB1AEC4D6500242145 /* AsciiArtist.swift */; };
+		73DA7B8E1B52DCA100A6C74E /* AsciiPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F080971AEDD7D000A20334 /* AsciiPalette.swift */; };
+		73DA7B8F1B52DCA100A6C74E /* Pixel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0384D6F01AEC66C300242145 /* Pixel.swift */; };
+		73DA7B901B52DCA100A6C74E /* UIImage+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F0808F1AED4F1600A20334 /* UIImage+Util.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		73DA7B791B52DC8900A6C74E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0384D6BE1AEC4BB900242145 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 73DA7B6C1B52DC8800A6C74E;
+			remoteInfo = SwiftAsciiArt_iOS;
+		};
+		73DA7B7B1B52DC8900A6C74E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0384D6BE1AEC4BB900242145 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0384D6C51AEC4BB900242145;
+			remoteInfo = SwiftAsciiArt;
+		};
+		73DA7B821B52DC8900A6C74E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0384D6BE1AEC4BB900242145 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 73DA7B6C1B52DC8800A6C74E;
+			remoteInfo = SwiftAsciiArt_iOS;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		73DA7B8B1B52DC8900A6C74E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				73DA7B851B52DC8900A6C74E /* SwiftAsciiArt_iOS.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0384D6C61AEC4BB900242145 /* SwiftAsciiArt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftAsciiArt.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -36,6 +83,12 @@
 		03F080911AED5CF700A20334 /* monkey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = monkey.png; path = images/monkey.png; sourceTree = "<group>"; };
 		03F080951AEDD29200A20334 /* batman.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = batman.png; path = images/batman.png; sourceTree = "<group>"; };
 		03F080971AEDD7D000A20334 /* AsciiPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AsciiPalette.swift; path = SwiftAsciiArt/AsciiPalette.swift; sourceTree = "<group>"; };
+		73DA7B6D1B52DC8800A6C74E /* SwiftAsciiArt_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftAsciiArt_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		73DA7B701B52DC8900A6C74E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		73DA7B711B52DC8900A6C74E /* SwiftAsciiArt_iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftAsciiArt_iOS.h; sourceTree = "<group>"; };
+		73DA7B771B52DC8900A6C74E /* SwiftAsciiArt_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftAsciiArt_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		73DA7B7F1B52DC8900A6C74E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		73DA7B801B52DC8900A6C74E /* SwiftAsciiArt_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftAsciiArt_iOSTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +96,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73DA7B841B52DC8900A6C74E /* SwiftAsciiArt_iOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		73DA7B691B52DC8800A6C74E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		73DA7B741B52DC8900A6C74E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				73DA7B781B52DC8900A6C74E /* SwiftAsciiArt_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +128,8 @@
 				0384D6C81AEC4BB900242145 /* app */,
 				0384D6EF1AEC4D7B00242145 /* images */,
 				0384D6C71AEC4BB900242145 /* products */,
+				73DA7B6E1B52DC8800A6C74E /* SwiftAsciiArt_iOS */,
+				73DA7B7D1B52DC8900A6C74E /* SwiftAsciiArt_iOSTests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -66,6 +137,8 @@
 			isa = PBXGroup;
 			children = (
 				0384D6C61AEC4BB900242145 /* SwiftAsciiArt.app */,
+				73DA7B6D1B52DC8800A6C74E /* SwiftAsciiArt_iOS.framework */,
+				73DA7B771B52DC8900A6C74E /* SwiftAsciiArt_iOSTests.xctest */,
 			);
 			name = products;
 			sourceTree = "<group>";
@@ -102,7 +175,52 @@
 			name = images;
 			sourceTree = "<group>";
 		};
+		73DA7B6E1B52DC8800A6C74E /* SwiftAsciiArt_iOS */ = {
+			isa = PBXGroup;
+			children = (
+				73DA7B711B52DC8900A6C74E /* SwiftAsciiArt_iOS.h */,
+				73DA7B6F1B52DC8900A6C74E /* Supporting Files */,
+			);
+			path = SwiftAsciiArt_iOS;
+			sourceTree = "<group>";
+		};
+		73DA7B6F1B52DC8900A6C74E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				73DA7B701B52DC8900A6C74E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		73DA7B7D1B52DC8900A6C74E /* SwiftAsciiArt_iOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				73DA7B801B52DC8900A6C74E /* SwiftAsciiArt_iOSTests.swift */,
+				73DA7B7E1B52DC8900A6C74E /* Supporting Files */,
+			);
+			path = SwiftAsciiArt_iOSTests;
+			sourceTree = "<group>";
+		};
+		73DA7B7E1B52DC8900A6C74E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				73DA7B7F1B52DC8900A6C74E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		73DA7B6A1B52DC8800A6C74E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				73DA7B721B52DC8900A6C74E /* SwiftAsciiArt_iOS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		0384D6C51AEC4BB900242145 /* SwiftAsciiArt */ = {
@@ -112,15 +230,54 @@
 				0384D6C21AEC4BB900242145 /* Sources */,
 				0384D6C31AEC4BB900242145 /* Frameworks */,
 				0384D6C41AEC4BB900242145 /* Resources */,
+				73DA7B8B1B52DC8900A6C74E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				73DA7B831B52DC8900A6C74E /* PBXTargetDependency */,
 			);
 			name = SwiftAsciiArt;
 			productName = SwiftAsciiArt;
 			productReference = 0384D6C61AEC4BB900242145 /* SwiftAsciiArt.app */;
 			productType = "com.apple.product-type.application";
+		};
+		73DA7B6C1B52DC8800A6C74E /* SwiftAsciiArt_iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 73DA7B8A1B52DC8900A6C74E /* Build configuration list for PBXNativeTarget "SwiftAsciiArt_iOS" */;
+			buildPhases = (
+				73DA7B681B52DC8800A6C74E /* Sources */,
+				73DA7B691B52DC8800A6C74E /* Frameworks */,
+				73DA7B6A1B52DC8800A6C74E /* Headers */,
+				73DA7B6B1B52DC8800A6C74E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftAsciiArt_iOS;
+			productName = SwiftAsciiArt_iOS;
+			productReference = 73DA7B6D1B52DC8800A6C74E /* SwiftAsciiArt_iOS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		73DA7B761B52DC8900A6C74E /* SwiftAsciiArt_iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 73DA7B8C1B52DC8900A6C74E /* Build configuration list for PBXNativeTarget "SwiftAsciiArt_iOSTests" */;
+			buildPhases = (
+				73DA7B731B52DC8900A6C74E /* Sources */,
+				73DA7B741B52DC8900A6C74E /* Frameworks */,
+				73DA7B751B52DC8900A6C74E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				73DA7B7A1B52DC8900A6C74E /* PBXTargetDependency */,
+				73DA7B7C1B52DC8900A6C74E /* PBXTargetDependency */,
+			);
+			name = SwiftAsciiArt_iOSTests;
+			productName = SwiftAsciiArt_iOSTests;
+			productReference = 73DA7B771B52DC8900A6C74E /* SwiftAsciiArt_iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -136,6 +293,13 @@
 					0384D6C51AEC4BB900242145 = {
 						CreatedOnToolsVersion = 6.3.1;
 						LastSwiftMigration = 0810;
+					};
+					73DA7B6C1B52DC8800A6C74E = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					73DA7B761B52DC8900A6C74E = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = 0384D6C51AEC4BB900242145;
 					};
 				};
 			};
@@ -153,6 +317,8 @@
 			projectRoot = "";
 			targets = (
 				0384D6C51AEC4BB900242145 /* SwiftAsciiArt */,
+				73DA7B6C1B52DC8800A6C74E /* SwiftAsciiArt_iOS */,
+				73DA7B761B52DC8900A6C74E /* SwiftAsciiArt_iOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -168,6 +334,20 @@
 				0384D6EE1AEC4D7700242145 /* kermit.png in Resources */,
 				0384D6D61AEC4BB900242145 /* LaunchScreen.xib in Resources */,
 				0384D6D31AEC4BB900242145 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		73DA7B6B1B52DC8800A6C74E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		73DA7B751B52DC8900A6C74E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,7 +367,44 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		73DA7B681B52DC8800A6C74E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				73DA7B8D1B52DC9700A6C74E /* AsciiArtist.swift in Sources */,
+				73DA7B8F1B52DCA100A6C74E /* Pixel.swift in Sources */,
+				73DA7B8E1B52DCA100A6C74E /* AsciiPalette.swift in Sources */,
+				73DA7B901B52DCA100A6C74E /* UIImage+Util.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		73DA7B731B52DC8900A6C74E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				73DA7B811B52DC8900A6C74E /* SwiftAsciiArt_iOSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		73DA7B7A1B52DC8900A6C74E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 73DA7B6C1B52DC8800A6C74E /* SwiftAsciiArt_iOS */;
+			targetProxy = 73DA7B791B52DC8900A6C74E /* PBXContainerItemProxy */;
+		};
+		73DA7B7C1B52DC8900A6C74E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0384D6C51AEC4BB900242145 /* SwiftAsciiArt */;
+			targetProxy = 73DA7B7B1B52DC8900A6C74E /* PBXContainerItemProxy */;
+		};
+		73DA7B831B52DC8900A6C74E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 73DA7B6C1B52DC8800A6C74E /* SwiftAsciiArt_iOS */;
+			targetProxy = 73DA7B821B52DC8900A6C74E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		0384D6CF1AEC4BB900242145 /* Main.storyboard */ = {
@@ -314,6 +531,82 @@
 			};
 			name = Release;
 		};
+		73DA7B861B52DC8900A6C74E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SwiftAsciiArt_iOS/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		73DA7B871B52DC8900A6C74E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = SwiftAsciiArt_iOS/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		73DA7B881B52DC8900A6C74E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SwiftAsciiArt_iOSTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftAsciiArt.app/SwiftAsciiArt";
+			};
+			name = Debug;
+		};
+		73DA7B891B52DC8900A6C74E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SwiftAsciiArt_iOSTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftAsciiArt.app/SwiftAsciiArt";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -334,6 +627,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		73DA7B8A1B52DC8900A6C74E /* Build configuration list for PBXNativeTarget "SwiftAsciiArt_iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				73DA7B861B52DC8900A6C74E /* Debug */,
+				73DA7B871B52DC8900A6C74E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		73DA7B8C1B52DC8900A6C74E /* Build configuration list for PBXNativeTarget "SwiftAsciiArt_iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				73DA7B881B52DC8900A6C74E /* Debug */,
+				73DA7B891B52DC8900A6C74E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
