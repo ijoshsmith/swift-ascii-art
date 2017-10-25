@@ -22,7 +22,11 @@ struct Pixel
     
     static func createPixelMatrix(_ width: Int, _ height: Int) -> [[Pixel]]
     {
-        return (0..<height).map { row in
+        return (0..<height).filter({ (col) -> Bool in
+            
+            return col%2 == 0
+            
+        }).map { row in
             (0..<width).map { col in
                 let offset = (width * row + col) * Pixel.bytesPerPixel
                 return Pixel(offset)
