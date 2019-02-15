@@ -28,10 +28,10 @@ extension UIImage
         
         // Draw the character with black.
         let nsString = NSString(string: symbol)
-        nsString.draw(at: rect.origin, withAttributes: [
-            NSFontAttributeName: font,
-            NSForegroundColorAttributeName: UIColor.black
-            ])
+        nsString.draw(at: rect.origin, withAttributes: convertToOptionalNSAttributedStringKeyDictionary([
+            convertFromNSAttributedStringKey(NSAttributedString.Key.font): font,
+            convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor): UIColor.black
+            ]))
         
         let image = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
@@ -125,4 +125,15 @@ extension UIImage
         default:     return   0
         }
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
+	return input.rawValue
 }
