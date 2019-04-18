@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AssetsLibrary
 
 class ViewController:
     UIViewController,
@@ -18,6 +19,7 @@ class ViewController:
     fileprivate let maxImageSize = CGSize(width: 310, height: 310)
     fileprivate lazy var palette: AsciiPalette = AsciiPalette(font: self.labelFont)
     
+    fileprivate let label = UILabel()
     fileprivate var currentLabel: UILabel?
     @IBOutlet weak var busyView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -53,6 +55,13 @@ class ViewController:
         imagePicker.delegate = self
         self.show(imagePicker, sender: self)
     }
+  
+    @IBAction func handleSaveTapped(_ sender: Any) {
+        
+        saveAsciiArt()
+    }
+    
+  
     
     // MARK: - UIImagePickerControllerDelegate
     
@@ -103,7 +112,6 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
     
     fileprivate func displayAsciiArt(_ asciiArt: String)
     {
-        let label = UILabel()
         label.font = self.labelFont
         label.lineBreakMode = NSLineBreakMode.byClipping
         label.numberOfLines = 0
@@ -118,6 +126,25 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
         
         self.updateZoomSettings(animated: false)
         scrollView.contentOffset = CGPoint.zero
+    }
+    
+    // MARK: - Save AsciiArt
+    
+    fileprivate func saveAsciiArt() {
+        
+        let rect = label.bounds
+        UIGraphicsBeginImageContext(rect.size)
+        let ctx = UIGraphicsGetCurrentContext()
+        label.layer.render(in: ctx!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        if let image = image {
+            
+            let library = ALAssetsLibrary()
+            let data = UIImageJPEGRepresentation(image, 1.0)
+            library.writeImageData(toSavedPhotosAlbum: data, metadata: nil, completionBlock: nil)
+        }
     }
     
     // MARK: - Zooming support
