@@ -22,7 +22,10 @@ struct Pixel
     
     static func createPixelMatrix(_ width: Int, _ height: Int) -> [[Pixel]]
     {
-        return (0..<height).map { row in
+        // Monospace glyphs are roughly twice as tall as they are wide, so
+        // sampling every other image row keeps the ASCII art closer to the
+        // original aspect ratio when rendered in a UILabel.
+        return (0..<height).filter { $0 % 2 == 0 }.map { row in
             (0..<width).map { col in
                 let offset = (width * row + col) * Pixel.bytesPerPixel
                 return Pixel(offset)
